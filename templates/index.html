@@ -1,57 +1,38 @@
-from flask import Flask, render_template, request
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator App</title>
+</head>
+<body>
+    <h1>Calculator</h1>
 
-app = Flask(__name__)
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
 
-def add(x, y):
-    return x + y
+    <form method="post" action="/">
+        <label for="num1">Number 1:</label>
+        <input type="text" name="num1" required>
+        <br>
 
-def subtract(x, y):
-    return x - y
+        <label for="num2">Number 2:</label>
+        <input type="text" name="num2" required>
+        <br>
 
-def multiply(x, y):
-    return x * y
+        <label for="operation">Operation:</label>
+        <select name="operation">
+            <option value="add">Addition</option>
+            <option value="subtract">Subtraction</option>
+            <option value="multiply">Multiplication</option>
+            <option value="divide">Division</option>
+        </select>
+        <br>
 
-def divide(x, y):
-    if y != 0:
-        return x / y
-    else:
-        return "Cannot divide by zero"
+        <input type="submit" value="Calculate">
+    </form>
 
-def is_float(value):
-    try:
-        float(value)
-        return True
-    except ValueError:
-        return False
-
-@app.route("/", methods=["GET", "POST"])
-def calculator():
-    result = None
-    error_message = None
-
-    if request.method == "POST":
-        num1 = request.form["num1"]
-        num2 = request.form["num2"]
-        operation = request.form["operation"]
-
-        # Validate input values
-        if not is_float(num1) or not is_float(num2):
-            error_message = "Please enter valid numbers."
-
-        else:
-            num1 = float(num1)
-            num2 = float(num2)
-
-            if operation == "add":
-                result = add(num1, num2)
-            elif operation == "subtract":
-                result = subtract(num1, num2)
-            elif operation == "multiply":
-                result = multiply(num1, num2)
-            elif operation == "divide":
-                result = divide(num1, num2)
-
-    return render_template("index.html", result=result, error_message=error_message)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    {% if result is not none %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
