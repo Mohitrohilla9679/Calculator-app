@@ -1,7 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator App</title>
+    <style>
+        body {
+            background-color: #3498db; /* Blue background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ffffff; /* White text color */
+        }
+
+        form {
+            background-color: #ffffff; /* White background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label, select {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db; /* Blue button color */
+            color: #ffffff; /* White text color */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+        h2 {
+            color: #ffffff; /* White text color */
+        }
+    </style>
 </head>
 <body>
     <h1>Calculator</h1>
