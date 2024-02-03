@@ -30,9 +30,9 @@ def calculator():
     error_message = None
 
     if request.method == "POST":
-        num1 = request.form["num1"]
-        num2 = request.form["num2"]
-        operation = request.form["operation"]
+        num1 = request.form.get("num1", "")
+        num2 = request.form.get("num2", "")
+        operation = request.form.get("operation", "")
 
         # Validate input values
         if not is_float(num1) or not is_float(num2):
