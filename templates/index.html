@@ -34,6 +34,7 @@
             font-size: 1.5em;
             margin-bottom: 10px;
             padding: 10px;
+            width: 100%;
         }
 
         .buttons {
@@ -66,10 +67,7 @@
 
     <form method="post" action="/">
         <div class="calculator">
-            <input type="text" id="display" name="num1" readonly>
-            <br>
-            <label for="num2">Number 2:</label>
-            <input type="text" name="num2" required>
+            <input type="text" id="display" name="expression" readonly>
             <br>
             <div class="buttons">
                 <button type="button" onclick="appendToDisplay('7')">7</button>
@@ -85,9 +83,10 @@
                 <button type="button" onclick="appendToDisplay('3')">3</button>
                 <button type="button" onclick="appendToDisplay('-')">-</button>
                 <button type="button" onclick="appendToDisplay('0')">0</button>
-                <button type="button" onclick="clearDisplay()">C</button>
+                <button type="button" onclick="clearLast()">C</button>
                 <button type="submit" name="operation" value="calculate">=</button>
                 <button type="button" onclick="appendToDisplay('+')">+</button>
+                <button type="button" onclick="clearDisplay()">CE</button>
             </div>
         </div>
     </form>
@@ -103,6 +102,11 @@
 
         const appendToDisplay = (value) => {
             displayValue += value;
+            updateDisplay();
+        };
+
+        const clearLast = () => {
+            displayValue = displayValue.slice(0, -1);
             updateDisplay();
         };
 
