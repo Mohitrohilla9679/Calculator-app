@@ -61,10 +61,6 @@
 <body>
     <h1>Calculator</h1>
 
-    {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
-
     <form method="post" action="/">
         <div class="calculator">
             <input type="text" id="display" name="expression" readonly>
@@ -84,16 +80,12 @@
                 <button type="button" onclick="appendToDisplay('-')">-</button>
                 <button type="button" onclick="appendToDisplay('0')">0</button>
                 <button type="button" onclick="clearLast()">C</button>
-                <button type="submit" name="operation" value="calculate">=</button>
+                <button type="button" onclick="calculate()">=</button>
                 <button type="button" onclick="appendToDisplay('+')">+</button>
                 <button type="button" onclick="clearDisplay()">CE</button>
             </div>
         </div>
     </form>
-
-    {% if result is not none %}
-        <h2>Result: {{ result }}</h2>
-    {% endif %}
 
     <script>
         let displayValue = '';
@@ -113,6 +105,16 @@
         const clearDisplay = () => {
             displayValue = '';
             updateDisplay();
+        };
+
+        const calculate = () => {
+            try {
+                displayValue = eval(displayValue);
+                updateDisplay();
+            } catch (error) {
+                // Handle error, e.g., show an error message
+                console.error(error);
+            }
         };
 
         const updateDisplay = () => {
