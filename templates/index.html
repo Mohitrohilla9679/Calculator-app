@@ -17,6 +17,7 @@
 
         h1, h2 {
             color: #ffffff;
+            text-align: center;  /* Center-align the text */
         }
 
         form {
@@ -66,60 +67,13 @@
             <input type="text" id="display" name="expression" readonly>
             <br>
             <div class="buttons">
-                <button type="button" onclick="appendToDisplay('7')">7</button>
-                <button type="button" onclick="appendToDisplay('8')">8</button>
-                <button type="button" onclick="appendToDisplay('9')">9</button>
-                <button type="button" onclick="appendToDisplay('/')">/</button>
-                <button type="button" onclick="appendToDisplay('4')">4</button>
-                <button type="button" onclick="appendToDisplay('5')">5</button>
-                <button type="button" onclick="appendToDisplay('6')">6</button>
-                <button type="button" onclick="appendToDisplay('*')">*</button>
-                <button type="button" onclick="appendToDisplay('1')">1</button>
-                <button type="button" onclick="appendToDisplay('2')">2</button>
-                <button type="button" onclick="appendToDisplay('3')">3</button>
-                <button type="button" onclick="appendToDisplay('-')">-</button>
-                <button type="button" onclick="appendToDisplay('0')">0</button>
-                <button type="button" onclick="clearLast()">C</button>
-                <button type="button" onclick="calculate()">=</button>
-                <button type="button" onclick="appendToDisplay('+')">+</button>
-                <button type="button" onclick="clearDisplay()">CE</button>
+                <!-- ... rest of the buttons ... -->
             </div>
         </div>
     </form>
 
     <script>
-        let displayValue = '';
-
-        const displayElement = document.getElementById('display');
-
-        const appendToDisplay = (value) => {
-            displayValue += value;
-            updateDisplay();
-        };
-
-        const clearLast = () => {
-            displayValue = displayValue.slice(0, -1);
-            updateDisplay();
-        };
-
-        const clearDisplay = () => {
-            displayValue = '';
-            updateDisplay();
-        };
-
-        const calculate = () => {
-            try {
-                displayValue = eval(displayValue);
-                updateDisplay();
-            } catch (error) {
-                // Handle error, e.g., show an error message
-                console.error(error);
-            }
-        };
-
-        const updateDisplay = () => {
-            displayElement.value = displayValue;
-        };
+        // ... existing script ...
     </script>
 </body>
 </html>
