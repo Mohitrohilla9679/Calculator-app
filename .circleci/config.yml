@@ -16,9 +16,6 @@ jobs:
           name: Build and Test
           command: |
             # Your build and test commands here
-      - run:
-          name: Print Directory Contents
-          command: ls -al && pwd
           
 
       # Install AWS CLI
@@ -32,7 +29,9 @@ jobs:
       - run:
           name: Upload Artifacts to S3
           command: |
-            aws s3 cp path/to/artifacts s3://new-test-bucket-12-12/ --recursive
+            aws s3 cp home/circleci/project/app.py s3://new-test-bucket-12-12/
+            aws s3 cp home/circleci/project/templates/ s3://new-test-bucket-12-12/templates/ --recursive
+
 
 workflows:
   version: 2
