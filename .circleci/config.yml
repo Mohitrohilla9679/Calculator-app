@@ -2,19 +2,36 @@ version: 2.1
 
 jobs:
   build:
-   docker:
-     - image: cimg/python:3.8
-   steps:
-     - checkout
-     - run: 
-         name: setup-python
-         command: |
-          python3 -m venv venv 
-          source venv/bin/activate
-          pip install -r requirements.txt
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: Setup Python and Install Dependencies
+          command: |
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Build and Test
+          command: |
+            # Your build and test commands here
+
+      # Install AWS CLI
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y awscli
+
+      # Upload Artifacts to S3
+      - run:
+          name: Upload Artifacts to S3
+          command: |
+            aws s3 cp path/to/artifacts s3://new-test-bucket-12-12/ --recursive
 
 workflows:
   version: 2
-  build: 
+  build:
     jobs:
-     - build
+      - build
