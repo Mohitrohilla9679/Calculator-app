@@ -29,8 +29,9 @@ jobs:
       - run:
           name: Upload Artifacts to S3
           command: |
-            aws s3 cp home/circleci/project/app.py s3://new-test-bucket-12-12/
-            aws s3 cp home/circleci/project/templates/ s3://new-test-bucket-12-12/templates/ --recursive
+            aws s3 cp app.py s3://new-test-bucket-12-12/
+            aws s3 cp templates/ s3://new-test-bucket-12-12/templates/ --recursive
+
 
 
 workflows:
