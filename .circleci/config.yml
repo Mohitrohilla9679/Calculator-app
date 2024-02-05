@@ -3,7 +3,18 @@ version: 2.1
 jobs:
   build:
    docker:
-     - image: cimg/python:3.11
+     - image: cimg/python:3.8
    steps:
      - checkout
-     - run: python3 app.py
+     - run: 
+         name: setup-python
+         command: |
+          python3 -m venv venv 
+          . venv bin activate
+          pip install -r requirements.txt
+
+workflows:
+  version: 2
+  build: 
+    jobs:
+     - build
