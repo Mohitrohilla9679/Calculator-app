@@ -16,6 +16,9 @@ jobs:
           name: Build and Test
           command: |
             # Your build and test commands here
+      - run:
+          name: Print Directory Contents
+          command: ls -al
 
       # Install AWS CLI
       - run:
